@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Adivuno</title>
+<link rel="icon" href="logo1.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+ 
+  <div class="container">
+      <img src="logo.png" alt="ERROR" class="title1">
+    
+    <p>Intenta adivinar un número entre 1 y 100:</p>
+    <input type="number" id="numero" placeholder="Ingresa tu número">
+    <button onclick="adivinarNumero()">Adivinar</button>
+    <p id="mensaje"></p>
+    <p>Intentos restantes: <span id="intentosRestantes">7</span></p>
+  </div>
+
+  <script>
+    let numeroAleatorio = Math.floor(Math.random() * 100) + 1;
+    let intentosRestantes = 7;
+
+    function adivinarNumero() {
+      let inputNumero = document.getElementById('numero').value;
+      let mensaje = document.getElementById('mensaje');
+      let intentosRestantesSpan = document.getElementById('intentosRestantes');
+
+      if (inputNumero.trim() === '' || isNaN(inputNumero)) {
+        mensaje.textContent = 'Por favor ingresa un número válido.';
+        return;
+      }
+
+      let numeroUsuario = parseInt(inputNumero);
+
+      if (numeroUsuario < 1 || numeroUsuario > 100) {
+        mensaje.textContent = 'El número debe estar entre 1 y 100.';
+        return;
+      }
+
+      intentosRestantes--;
+
+      if (numeroUsuario === numeroAleatorio) {
+        mensaje.textContent = `¡Felicidades! ¡Has adivinado el número ${numeroAleatorio} correctamente! ¿Quieres volver a jugar?`;
+        document.getElementById('numero').disabled = true;
+        document.querySelector('button').disabled = true;
+      } else {
+        if (intentosRestantes > 0) {
+          if (numeroUsuario < numeroAleatorio) {
+            mensaje.textContent = `Intenta con un número más alto.`;
+          } else {
+            mensaje.textContent = `Intenta con un número más bajo.`;
+          }
+          intentosRestantesSpan.textContent = intentosRestantes;
+        } else {
+          mensaje.textContent = `¡Se han agotado los intentos! El número era ${numeroAleatorio}.`;
+          document.getElementById('numero').disabled = true;
+          document.querySelector('button').disabled = true;
+        }
+      }
+    }
+  </script>
+</body>
+</html>

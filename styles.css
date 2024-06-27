@@ -1,11 +1,40 @@
-body {
-  font-family: Arial, sans-serif;
+
+.boton{
+    border: none;
+}
+button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  cursor: pointer;
+  padding: 10px 20px;
+  border-radius: 1000px;
+}
+.container{
+    
+     text-align: center;
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 10%;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    
+    
+}
+body{
+    font-family: Arial, sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100vh;
   margin: 0;
   background-color: #6af5ff;
+  
+  
+}
+.title1{
+    height: 100px;
+    width: 300px;
+    
 }
 
 #game-container {
@@ -22,15 +51,6 @@ input[type="number"], button {
   margin: 10px;
 }
 
-button {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  cursor: pointer;
-  padding: 10px 20px;
-  border-radius: 5px;
-}
-
 p#error-message {
   color: red;
 }
@@ -38,4 +58,7 @@ body {
     background-image: url('fondo.jpg');
     background-size: cover; 
     background-repeat: no-repeat; /
+}
+h1{
+    font-size: 10px;
 }
